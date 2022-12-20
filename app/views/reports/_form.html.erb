@@ -11,6 +11,8 @@
     </div>
   <% end %>
 
+  <%= form.hidden_field :student_id, value: student_id %>
+
   <div class="my-5">
     <%= form.label :date %>
     <%= form.datetime_field :date, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>

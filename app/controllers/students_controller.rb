@@ -3,6 +3,8 @@ class StudentsController < ApplicationController
 
   # GET /students or /students.json
   def index
+    puts('********************************************')
+    puts(Student.all)
     @students = Student.all
   end
 

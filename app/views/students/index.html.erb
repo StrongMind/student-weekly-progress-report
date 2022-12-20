@@ -34,8 +34,8 @@
         <td class="text-align-right"><%= student.at_risk %></td>
         <td><%= student.last_login %></td>
         <td class="text-align-center"><%= student.missing_assignments %></td>
-        <td class="text-align-center"><%= link_to 'Generate Report', new_report_path %></td>
-        <td class="text-align-center"><%= student.reports.order('updated_at').first %></td>
+        <td class="text-align-center"><%= link_to 'Generate Report', new_report_path({ report: { student_id: student.id } })%></td>
+        <td class="text-align-center"><%= student.reports.order('updated_at').last %></td>
       </tr>
     <% end %>
     </tbody>

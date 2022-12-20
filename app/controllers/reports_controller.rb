@@ -13,6 +13,8 @@ class ReportsController < ApplicationController
   # GET /reports/new
   def new
     @report = Report.new
+    @student_id = report_params[:student_id]
+    puts(@student_id)
   end
 
   # GET /reports/1/edit
@@ -21,6 +23,7 @@ class ReportsController < ApplicationController
 
   # POST /reports or /reports.json
   def create
+    puts("report_params: #{report_params}")
     @report = Report.new(report_params)
 
     respond_to do |format|
@@ -65,6 +68,6 @@ class ReportsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def report_params
-      params.require(:report).permit(:date, :comments)
+      params.require(:report).permit(:date, :comments, :student_id)
     end
 end
