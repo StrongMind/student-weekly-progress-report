@@ -34,7 +34,7 @@
       <td>Peter Parker</td>
       <td><%= student.last_login %></td>
       <td class="text-align-center"><%=student.missing_assignments%></td>
-      <td class="text-align-center">Active</td>
+      <td class="text-align-center"><%= link_to 'Generate Report', new_report_path %></td>
       <td class="text-align-center">anything</td>
     </tr>
     <% end %>
