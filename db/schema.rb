@@ -10,11 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_20_204813) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_20_220505) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "courses", force: :cascade do |t|
+    t.float "grade"
     t.string "letter_grade"
     t.string "name"
     t.datetime "created_at", null: false
@@ -25,12 +26,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_20_204813) do
     t.index ["teacher_id"], name: "index_courses_on_teacher_id"
   end
 
-  create_table "courses_students", id: false, force: :cascade do |t|
-    t.bigint "course_id", null: false
-    t.bigint "student_id", null: false
+  create_table "enrollments", force: :cascade do |t|
     t.float "grade"
-    t.index ["course_id", "student_id"], name: "index_courses_students_on_course_id_and_student_id"
-    t.index ["student_id", "course_id"], name: "index_courses_students_on_student_id_and_course_id"
+    t.bigint "student_id", null: false
+    t.bigint "course_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_enrollments_on_course_id"
+    t.index ["student_id"], name: "index_enrollments_on_student_id"
   end
 
   create_table "reports", force: :cascade do |t|
@@ -60,6 +63,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_20_204813) do
 
   add_foreign_key "courses", "students"
   add_foreign_key "courses", "teachers"
+  add_foreign_key "enrollments", "courses"
+  add_foreign_key "enrollments", "students"
   add_foreign_key "reports", "students"
   add_foreign_key "students", "teachers", on_delete: :cascade
 end

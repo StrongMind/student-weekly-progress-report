@@ -1,7 +1,6 @@
 FactoryBot.define do
   factory :course do
-    grade { 1.5 }
-    letter_grade { "MyString" }
-    name { "MyString" }
+    student_id { Faker::Number.number(digits:10) }
+    course_id { Faker::Number.number(digits:10) }
   end
 end
