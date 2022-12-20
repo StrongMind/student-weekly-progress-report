@@ -20,6 +20,10 @@ namespace :load do
     end
     puts('creating students')
 
+    Course.delete_all
+    puts('deleting all courses')
+    6.times do |i |
 
+  end
   end
 end
