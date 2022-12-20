@@ -8,7 +8,48 @@
     <%= link_to 'New student', new_student_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
   </div>
 
+  <table cellspacing="0" cellpadding="0">
+    <caption>This caption is used by assistive technologies to describe the contents of the table.</caption>
+    <colgroup>
+      <col class="name">
+      <col class="alias">
+      <col class="super-abilities">
+      <col class="age">
+      <col class="status">
+    </colgroup>
+    <thead>
+    <tr>
+      <th class="name">Name</th>
+      <th class="alias">Current Grade</th>
+      <th class="super-abilities">Last Login</th>
+      <th class="age">Missing Assignments</th>
+      <th class="status">Preview</th>
+      <th class="status">Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @students.each do |student| %>
+    <tr>
+      <td class="text-align-right"><%= student.name %></td>
+      <td>Peter Parker</td>
+      <td>Spider sense, Wall climb</td>
+      <td class="text-align-center">19</td>
+      <td class="text-align-center">Active</td>
+      <td class="text-align-center">anything</td>
+    </tr>
+    <% end %>
+    </tbody>
+    <tfoot>
+    <tr>
+      <td colspan="2">NOTE: To protect their loved ones, super heroes have to hide their identity.</td>
+      <td colspan="2">"Success is the sum of small efforts repeated day in and day out." <br> - Someone</td>
+    </tr>
+    </tfoot>
+  </table>
+
+
   <div id="students" class="min-w-full">
     <%= render @students %>
   </div>
+
 </div>
