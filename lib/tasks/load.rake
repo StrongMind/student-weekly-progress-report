@@ -14,8 +14,9 @@ namespace :load do
     puts('deleting all students')
     40.times do|i |
       name = Faker::App.name + i.to_s
-      last_login = Faker::Date.between(from: 2.days.ago, to: Date.today)
-      Student.create!(name: name, last_login: last_login, teacher_id: 1 )
+      missing_assignments = Faker::Number.between(from: 0, to: 3)
+      last_login = Faker::Date.between(from: 2.days.ago, to: Date.today).strftime("%m/%d/%Y")
+      Student.create!(name: name, last_login: last_login, teacher_id: 1, missing_assignments: missing_assignments)
     end
     puts('creating students')
 
