@@ -20,7 +20,7 @@
     <thead>
     <tr>
       <th class="name">Name</th>
-      <th class="alias">Current Grade</th>
+      <th class="alias">At Risk</th>
       <th class="super-abilities">Last Login</th>
       <th class="age">Missing Assignments</th>
       <th class="status">Preview</th>
@@ -29,14 +29,14 @@
     </thead>
     <tbody>
     <% @students.each do |student| %>
-    <tr>
-      <td class="text-align-right"><%= student.name %></td>
-      <td>Peter Parker</td>
-      <td><%= student.last_login %></td>
-      <td class="text-align-center"><%=student.missing_assignments%></td>
-      <td class="text-align-center"><%= link_to 'Generate Report', new_report_path %></td>
-      <td class="text-align-center"><%=student.reports.order('updated_at').first %></td>
-    </tr>
+      <tr>
+        <td class="text-align-right"><%= student.name %></td>
+        <td class="text-align-right"><%= student.at_risk %></td>
+        <td><%= student.last_login %></td>
+        <td class="text-align-center"><%= student.missing_assignments %></td>
+        <td class="text-align-center"><%= link_to 'Generate Report', new_report_path %></td>
+        <td class="text-align-center"><%= student.reports.order('updated_at').first %></td>
+      </tr>
     <% end %>
     </tbody>
     <tfoot>

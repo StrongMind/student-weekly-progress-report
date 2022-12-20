@@ -15,4 +15,5 @@ class Enrollment < ApplicationRecord
       "F"
     end
   end
+
 end
