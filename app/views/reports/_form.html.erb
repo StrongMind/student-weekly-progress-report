@@ -19,16 +19,17 @@
   </div>
 
   <% student = Student.find(student_id) %>
+  <% teacher = student.teacher %>
   <h1><%= student.name %></h1>
+  <h3>Professor: <%= teacher.name %></h3>
+  <h3>Last login was: <%= student.last_login %></h3>
 
-  <%#= form.label :student, value: student %>
-  <%# student.courses.each do |course| %>
-<!--<div class="my-5">-->
-      <%#= form.label course.name %>
-      <%#= form.number_field course.name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-<!--    </div>-->
-    <%# end %>
-
+  <% student.enrollments.each do |enrollment| %>
+    <% course = Course.find(enrollment.course_id) %>
+    <div class="my-5">
+      <%= form.label course.name %>: <%= enrollment.grade %>
+  <% end %>
+  </div>
   <div class="my-5">
     <%= form.label :comments %>
     <%= form.text_area :comments, rows: 4, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
