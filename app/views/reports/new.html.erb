@@ -4,10 +4,10 @@
       <i class="fa-light fa-arrow-left"></i>
       <%= link_to 'Go Back', students_path, class: 'sm-btn-tertiary text-gray-500' %>
     </button>
+
   </div>
 
   <div class="mx-auto md:w-2/3 w-full">
-
     <%= render "form", report: @report, student_id: @student_id, student: @student %>
 
   </div>
