@@ -3,13 +3,7 @@
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
 
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Students</h1>
-    <%= link_to 'New student', new_student_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
-  </div>
-
-  <table cellspacing="0" cellpadding="0">
-    <caption>This caption is used by assistive technologies to describe the contents of the table.</caption>
+  <table>
     <colgroup>
       <col class="name">
       <col class="alias">
@@ -30,26 +24,32 @@
     <tbody>
     <% @students.each do |student| %>
       <tr>
-        <td class="text-align-right"><%= student.name %></td>
-        <td class="text-align-right"><%= student.at_risk %></td>
-        <td><%= student.last_login %></td>
+        <td class="text-align-left"><%= student.name %></td>
+        <td class="text-align-center">
+          <% if student.at_risk%>
+            <div class="icon-container text-red-500">
+              <i class="fa-solid fa-exclamation-circle text-red-500"></i>
+              At Risk
+            </div>
+          <% else %>
+            <div class="icon-container">
+              <i class="fa-solid fa-circle-check text-green-500"></i>
+            </div>
+          <% end %>
+        </td>
+        <td class="text-align-center"><%= student.last_login %></td>
         <td class="text-align-center"><%= student.missing_assignments %></td>
-        <td class="text-align-center"><%= link_to 'Generate Report', new_report_path({ report: { student: student.attributes, student_id: student.id } })%></td>
+        <td class="text-align-center"><%= link_to 'Generate Report', new_report_path({ report: { student: student.attributes, student_id: student.id } }) %></td>
         <td class="text-align-center"><%= student.reports.order('date').last&.date&.strftime("%m/%d/%Y") %></td>
       </tr>
     <% end %>
     </tbody>
     <tfoot>
     <tr>
-      <td colspan="2">NOTE: To protect their loved ones, super heroes have to hide their identity.</td>
-      <td colspan="2">"Success is the sum of small efforts repeated day in and day out." <br> - Someone</td>
+      <td class="text-align-center" colspan="6">This table contains a list of students and their pertinent information, along with a way to generate a
+        report.
+      </td>
     </tr>
     </tfoot>
   </table>
-
-
-  <div id="students" class="min-w-full">
-    <%= render @students %>
-  </div>
-
 </div>
