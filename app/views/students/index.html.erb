@@ -35,7 +35,7 @@
         <td><%= student.last_login %></td>
         <td class="text-align-center"><%= student.missing_assignments %></td>
         <td class="text-align-center"><%= link_to 'Generate Report', new_report_path({ report: { student: student.attributes, student_id: student.id } })%></td>
-        <td class="text-align-center"><%= student.reports.order('updated_at').last%></td>
+        <td class="text-align-center"><%= student.reports.order('date').last&.date&.strftime("%m/%d/%Y") %></td>
       </tr>
     <% end %>
     </tbody>
