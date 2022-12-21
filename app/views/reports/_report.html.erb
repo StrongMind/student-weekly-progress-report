@@ -1,8 +1,61 @@
 <div id="<%= dom_id report %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Date:</strong>
-    <%= report.date %>
-  </p>
+  <h6>Progress Report for
+    <%= DateTime.now.strftime('%m/%d/%Y') %>
+  </h6>
+
+  <% student = Student.find(report.student_id) %>
+  <% teacher = student.teacher %>
+
+  <br>
+
+  <div>
+    <div class="inline-block">
+      <h6>Student: </h6>
+    </div>
+    <div class="inline-block">
+      <%= student.name %>
+    </div>
+  </div>
+
+  <br>
+
+  <div>
+    <div class="inline-block">
+      <h6>Teacher: </h6>
+    </div>
+    <div class="inline-block">
+      <%= teacher.name %>
+    </div>
+  </div>
+
+  <br>
+
+  <div>
+    <div class="inline-block">
+      <h6>Last Login: </h6>
+    </div>
+    <div class="inline-block">
+      <%= student.last_login %>
+    </div>
+  </div>
+
+  <br>
+  <hr>
+  <br>
+
+  <h6>Current Course Grades</h6>
+  <% student.enrollments.each do |enrollment| %>
+    <% course = Course.find(enrollment.course_id) %>
+    <div>
+      <br>
+      <div class="inline-block">
+        <h6><%= course.name %>: </h6>
+      </div>
+      <div class="inline-block">
+        <%= enrollment.grade %>
+      </div>
+    </div>
+  <% end %>
 
   <p class="my-5">
     <strong class="block font-medium mb-1">Comments:</strong>
