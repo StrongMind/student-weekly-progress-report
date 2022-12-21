@@ -13,14 +13,22 @@
 
   <%= form.hidden_field :student_id, value: student_id %>
 
-  <div class="my-5">
-    <%= form.label :date %>
-    <%= form.datetime_field :date, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
+  <h6>Progress Report for
+    <%= DateTime.now.strftime('%m/%d/%Y') %>
+  </h6>
 
+  <%= form.hidden_field :date, value: DateTime.now %>
   <% student = Student.find(student_id) %>
   <% teacher = student.teacher %>
-  <h1><%= student.name %></h1>
+  <div>
+    <div class="inline-block">
+      <h6>Student: </h6>
+    </div>
+    <div class="inline-block">
+      <%= student.name %>
+    </div>
+  </div>
+
   <h3>Professor: <%= teacher.name %></h3>
   <h3>Last login was: <%= student.last_login %></h3>
 
