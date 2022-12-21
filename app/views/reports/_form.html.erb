@@ -20,6 +20,9 @@
   <%= form.hidden_field :date, value: DateTime.now %>
   <% student = Student.find(student_id) %>
   <% teacher = student.teacher %>
+
+  <br>
+
   <div>
     <div class="inline-block">
       <h6>Student: </h6>
@@ -28,6 +31,8 @@
       <%= student.name %>
     </div>
   </div>
+
+  <br>
 
   <div>
     <div class="inline-block">
@@ -38,20 +43,41 @@
     </div>
   </div>
 
-  <h3>Last login was: <%= student.last_login %></h3>
+  <br>
 
+  <div>
+    <div class="inline-block">
+      <h6>Last Login: </h6>
+    </div>
+    <div class="inline-block">
+      <%= student.last_login %>
+    </div>
+  </div>
+
+  <br>
+  <hr>
+  <br>
+
+  <h6>Current Course Grades</h6>
   <% student.enrollments.each do |enrollment| %>
     <% course = Course.find(enrollment.course_id) %>
-    <div class="my-5">
-      <%= form.label course.name %>: <%= enrollment.grade %>
+    <div>
+      <br>
+      <div class="inline-block">
+        <h6><%= form.label course.name %>: </h6>
+      </div>
+      <div class="inline-block">
+        <%= enrollment.grade %>
+      </div>
+    </div>
   <% end %>
   </div>
   <div class="my-5">
     <%= form.label :comments %>
-    <%= form.text_area :comments, rows: 4, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.text_area :comments, rows: 4, class: "block shadow rounded-md border border-black-500 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
-  <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+  <div style="float: right;">
+    <%= form.submit class: "sm-btn sm-btn-primary", value: "Generate Progress Report" %>
   </div>
 <% end %>
