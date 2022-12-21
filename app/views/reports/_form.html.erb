@@ -59,18 +59,24 @@
   <br>
 
   <h6>Current Course Grades</h6>
-  <% student.enrollments.each do |enrollment| %>
-    <% course = Course.find(enrollment.course_id) %>
-    <div>
-      <br>
-      <div class="inline-block">
-        <h6><%= form.label course.name %>: </h6>
+
+  <div class="h-56 grid grid-cols-3 gap-4 content-around">
+
+    <% student.enrollments.each do |enrollment| %>
+      <% course = Course.find(enrollment.course_id) %>
+      <div>
+        <br>
+        <div class="inline-block">
+          <h6><%= form.label course.name %>: </h6>
+        </div>
+        <div class="inline-block">
+          <%= enrollment.grade %>
+        </div>
       </div>
-      <div class="inline-block">
-        <%= enrollment.grade %>
-      </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
+
+  <br>
 
   <div class="my-5">
     <%= form.label :comments %>
