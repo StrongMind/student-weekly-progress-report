@@ -53,9 +53,15 @@
         <div class="inline-block">
           <h6><%=course.name %>: </h6>
         </div>
-        <div class="inline-block">
-          <%= enrollment.grade %>
-        </div>
+        <% if enrollment.grade <= 69 %>
+          <div class="inline-block text-red-500">
+            <%= enrollment.grade %>
+          </div>
+        <% else %>
+          <div class="inline-block">
+            <%= enrollment.grade %>
+          </div>
+        <% end %>
       </div>
     <% end %>
   </div>
