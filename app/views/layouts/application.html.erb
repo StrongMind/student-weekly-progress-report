@@ -6,14 +6,15 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
-    <%= stylesheet_link_tag "application", 'https://backpack-ui.strongmind.com/assets/css/BackpackUI.2a45dc9.css' %>
+    <%= stylesheet_link_tag "application", 'https://backpack-ui.strongmind.com/assets/css/BackpackUI.bd414b6.css' %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body class="strongmind-ui">
-    <main class="container mx-auto mt-28 px-5 flex">
-      <%= yield %>
-    </main>
+      <div class="lti-container" style="margin: 0 auto">
+        <div class="lti-header"><h3>Student Progress</h3></div>
+        <%= yield %>
+      </div>
   </body>
 </html>
