@@ -71,7 +71,7 @@
       </div>
     </div>
   <% end %>
-  </div>
+
   <div class="my-5">
     <%= form.label :comments %>
     <%= form.text_area :comments, rows: 4, class: "block shadow rounded-md border border-black-500 outline-none px-3 py-2 mt-2 w-full" %>
@@ -80,4 +80,7 @@
   <div style="float: right;">
     <%= form.submit class: "sm-btn sm-btn-primary", value: "Generate Progress Report" %>
   </div>
+  <!--  <div class="inline">-->
+  <%#= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+  <!--  </div>-->
 <% end %>
