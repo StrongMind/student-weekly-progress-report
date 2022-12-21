@@ -12,4 +12,14 @@ class Student < ApplicationRecord
       false
     end
   end
+
+  def students_enrollments
+    students = Student.all
+    students.each do |student|
+      student
+      student.enrollments.each do |enrollment|
+        enrollment
+      end
+    end
+  end
 end

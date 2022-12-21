@@ -13,6 +13,7 @@ class ReportsController < ApplicationController
   # GET /reports/new
   def new
     @report = Report.new
+    @student = report_params[:student]
     @student_id = report_params[:student_id]
     puts(@student_id)
   end
@@ -68,6 +69,6 @@ class ReportsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def report_params
-      params.require(:report).permit(:date, :comments, :student_id)
+      params.require(:report).permit(:date, :comments, :student_id, :name, :last_login, :teacher_id, :missing_assignments)
     end
 end
