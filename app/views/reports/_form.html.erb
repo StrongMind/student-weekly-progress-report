@@ -29,7 +29,15 @@
     </div>
   </div>
 
-  <h3>Professor: <%= teacher.name %></h3>
+  <div>
+    <div class="inline-block">
+      <h6>Teacher: </h6>
+    </div>
+    <div class="inline-block">
+      <%= teacher.name %>
+    </div>
+  </div>
+
   <h3>Last login was: <%= student.last_login %></h3>
 
   <% student.enrollments.each do |enrollment| %>
