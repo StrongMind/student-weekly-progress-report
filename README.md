@@ -1,24 +1,25 @@
-# README
+# Student Snapshot Report
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## What? 
 
-Things you may want to cover:
+The Student Snapshot Report is a ruby on rails application designed to store and present student snapshot reports.
+The student snapshot report is a teacher requested tool that shows the students progress up to the date of the report.
 
-* Ruby version
+## Local Install
 
-* System dependencies
+* Ruby 3.1.3 (rbenv preferred)
+* Bundler
+* Postgres
 
-* Configuration
+1. Run Bundler `bundle install`
+2. Database `rails db:reset & rails db:migrate`
+3. Rake Seed `rake load:all`
 
-* Database creation
+#### Known issues and fixes
 
-* Database initialization
+before seeding your data (rake load:all) you'll need to run rails db:reset & rails db:migrate
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+## Run service locally 
+1. ```bin/dev```
 
-* Deployment instructions
-
-* ...
